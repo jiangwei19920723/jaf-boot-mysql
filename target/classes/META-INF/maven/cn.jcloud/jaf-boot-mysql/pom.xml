@@ -4,7 +4,6 @@
 	<artifactId>jaf-boot-mysql</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
-		<jdk.version>1.8</jdk.version>
 	</properties>
 	<parent>
 	    <groupId>org.springframework.boot</groupId>
@@ -51,26 +50,40 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.16</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>3.14</version>
-        </dependency>
         <!-- Junit 单元测试 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency> 
-            <groupId>io.springfox</groupId> 
-            <artifactId>springfox-swagger2</artifactId> 
-            <version>2.6.0</version> 
-        </dependency> 
-        <dependency> 
-            <groupId>io.springfox</groupId> 
-            <artifactId>springfox-swagger-ui</artifactId> 
-            <version>2.6.0</version> 
+        <dependency>
+        	<groupId>commons-logging</groupId>
+        	<artifactId>commons-logging</artifactId>
+        	<version>1.2</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.commons</groupId>
+        	<artifactId>commons-collections4</artifactId>
+        	<version>4.0</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.commons</groupId>
+        	<artifactId>commons-lang3</artifactId>
+        	<version>3.3.2</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.commons</groupId>
+        	<artifactId>commons-pool2</artifactId>
+        </dependency>
+        <dependency>
+        	<groupId>commons-lang</groupId>
+        	<artifactId>commons-lang</artifactId>
+        	<version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
         </dependency>
 	</dependencies>
 </project>
