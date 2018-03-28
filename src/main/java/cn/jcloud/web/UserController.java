@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @since  
  * @return  
  */
-@RestController("/v0.1/user")
+@RestController
 public class UserController {
-	@RequestMapping(value="/{id}",method=RequestMethod.GET)
+	@RequestMapping(value="/v0.1/user/{id}",method=RequestMethod.GET)
 	public Long create(@PathVariable("id") Long id){
 		return id;
 	}
