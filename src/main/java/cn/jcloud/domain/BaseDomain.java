@@ -1,10 +1,11 @@
 package cn.jcloud.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import java.io.Serializable;
 
 /**
  * Created by Wei Han on 2016/1/5.
