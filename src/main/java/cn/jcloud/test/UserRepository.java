@@ -1,8 +1,7 @@
 package cn.jcloud.test;
 
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
-
-import cn.jcloud.repository.BizRepository;
 
 /** 
  * @author  蒋维 
@@ -13,6 +12,6 @@ import cn.jcloud.repository.BizRepository;
  * @return  
  */
 @Repository
-public interface UserRepository extends BizRepository<User, Long> {
+public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
 }
