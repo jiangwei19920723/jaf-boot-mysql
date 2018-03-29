@@ -2,12 +2,19 @@ package cn.jcloud.config;
 
 import java.sql.SQLException;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.ValidationMode;
 import javax.sql.DataSource;
 
+import org.hibernate.cfg.Environment;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import com.alibaba.druid.pool.DruidDataSource;
 
@@ -76,7 +83,30 @@ public class DruidDBConfig {
 
 	@Value("{spring.datasource.connectionProperties}")
 	private String connectionProperties;
+    @Bean
+    public EntityManagerFactory entityManagerFactory() {
+        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        vendorAdapter.setGenerateDdl(true);
+        vendorAdapter.setShowSql(true);
 
+        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+
+        factory.setJpaVendorAdapter(vendorAdapter);
+        factory.setPackagesToScan("cn.jcloud");
+        factory.setDataSource(dataSource());
+        factory.getJpaPropertyMap().put("hibernate.ejb.naming_strategy", "org.hibernate.cfg.ImprovedNamingStrategy");
+        factory.getJpaPropertyMap().put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
+        factory.setValidationMode(ValidationMode.NONE);
+        factory.afterPropertiesSet();
+        return factory.getObject();
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+        JpaTransactionManager txManager = new JpaTransactionManager();
+        txManager.setEntityManagerFactory(entityManagerFactory);
+        return txManager;
+    }
 	@Bean // 声明其为Bean实例
 	@Primary // 在同样的DataSource中，首先使用被标注的DataSource
 	public DataSource dataSource() {
