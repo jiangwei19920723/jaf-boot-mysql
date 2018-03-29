@@ -1,9 +1,10 @@
 package cn.jcloud.repository;
 
 import java.io.Serializable;
+import java.util.List;
 
+import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.stereotype.Repository;
 
 import cn.jcloud.domain.BaseDomain;
 
@@ -15,7 +16,7 @@ import cn.jcloud.domain.BaseDomain;
  * @since  
  * @return  
  */
-@Repository
+@NoRepositoryBean
 public interface BaseRepository<T extends BaseDomain<I>,I extends Serializable> extends PagingAndSortingRepository<T, I>{
-
+	List<T> findAll();
 }
