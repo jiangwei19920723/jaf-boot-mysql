@@ -94,7 +94,10 @@ public class DruidDBConfig {
         factory.setJpaVendorAdapter(vendorAdapter);
         factory.setPackagesToScan("cn.jcloud");
         factory.setDataSource(dataSource());
-        factory.getJpaPropertyMap().put("hibernate.ejb.naming_strategy", "org.hibernate.cfg.ImprovedNamingStrategy");
+        //hibernate5.0版本之前命名策略
+        //factory.getJpaPropertyMap().put("hibernate.ejb.naming_strategy", "org.hibernate.cfg.ImprovedNamingStrategy");
+        //hibernate5.0版本之后命名策略
+        factory.getJpaPropertyMap().put("hibernate.physical_naming_strategy", "org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy");
         factory.getJpaPropertyMap().put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
         factory.setValidationMode(ValidationMode.NONE);
         factory.afterPropertiesSet();

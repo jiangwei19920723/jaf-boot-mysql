@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.Properties;
 
+import org.hibernate.MappingException;
 import org.hibernate.dialect.Dialect;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.id.Configurable;
 import org.hibernate.id.IdentifierGenerator;
+import org.hibernate.service.ServiceRegistry;
 import org.hibernate.type.Type;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,11 +65,14 @@ public class DistributedIdentifierGenerator implements IdentifierGenerator, Conf
      */
     private Boolean distributed;
 
-    @Override
-    public void configure(Type type, Properties params, Dialect d) {
-        String jpaEntityName = params.getProperty(IdentifierGenerator.JPA_ENTITY_NAME);
-        this.key = "idg:" + jpaEntityName;
-    }
+	@Override
+	public void configure(Type arg0, Properties params, ServiceRegistry arg2) throws MappingException {
+		// TODO Auto-generated method stub
+		String jpaEntityName = params.getProperty(IdentifierGenerator.JPA_ENTITY_NAME);
+		this.key = "idg:" + jpaEntityName;
+		
+	}
+
 
     @Override
     public Serializable generate(SessionImplementor session, Object object) {
@@ -156,4 +161,5 @@ public class DistributedIdentifierGenerator implements IdentifierGenerator, Conf
         Class c = Class.forName("xxx");
         System.out.println(c == null);
     }
+
 }
