@@ -3,7 +3,7 @@ Implementation-Title: jaf-boot-mysql
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: Administrator
 Implementation-Vendor-Id: cn.jcloud
-Build-Jdk: 1.8.0_161
+Build-Jdk: 1.8.0_171
 Implementation-URL: http://projects.spring.io/spring-boot/jaf-boot-mys
  ql/
 Created-By: Maven Integration for Eclipse

@@ -19,6 +19,7 @@
 	    <dependency>
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-devtools</artifactId>
+	        <optional>true</optional>
 	    </dependency>
 	    <!-- 下面两个引入为了操作数据库 -->
 	    <dependency>
